@@ -1,30 +1,26 @@
 #!/usr/bin/python3
-"""
-Flask web application
-"""
-
-
+"""task 2"""
 from flask import Flask
-app = Flask(__name__)
 
 
-@app.route('/', strict_slashes=False)
-def hello():
-    """Hello HBNB"""
-    return 'Hello HBNB!'
+if __name__ == "__main__":
+    app = Flask(__name__)
 
+    @app.route("/", strict_slashes=False)
+    def home():
+        """the home directory displaying"""
+        return "Hello HBNB!"
 
-@app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """returns HBNB"""
-    return 'HBNB'
+    @app.route("/hbnb", strict_slashes=False)
+    def hbnb():
+        """the hbnb directory displaying"""
+        return "HBNB!"
 
-
-@app.route('/c/<text>', strict_slashes=False)
-def Cisfun(text):
-    """print text"""
-    return 'C ' + text.replace('_', ' ')
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000')
+    @app.route("/c/<string:f>", strict_slashes=False)
+    def cisfun(f):
+        """
+        the c directory displayin
+        replacing "_" by " "
+        """
+        return "C " + f.replace("_", " ")
+    app.run(host="0.0.0.0", port=5000)
